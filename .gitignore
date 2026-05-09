@@ -4,7 +4,7 @@
 /target/
 /debug/
 **/*.rs.bk
-
+/analysis/*.md
 # If you are building an executable, you typically commit Cargo.lock.
 # For OS dev, you often commit it to ensure reproducible builds.
 # Cargo.lock

@@ -1,0 +1,6 @@
+[workspace]
+members = [
+    "kernel",
+    "boot/freeldr",
+]
+resolver = "2"
