@@ -2,5 +2,16 @@
 members = [
     "kernel",
     "boot/freeldr",
+    "dll/ntdll",
+    "win32-kernel/win32k",
+    "dll/win32/kernel32",
+    "dll/win32/user32",
+    "dll/win32/gdi32",
+    "subsystems/smss",
+    "subsystems/csrss",
+    "drivers/filesystems/fat",
+    "drivers/storage/ahci",
+    "base/shell/explorer",
+    "base/applications/cmd",
 ]
 resolver = "2"
