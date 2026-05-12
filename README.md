@@ -36,7 +36,7 @@ To build and test Arc-Os, you will need the following tools installed:
 
 ### Building the OS
 
-For a detailed walkthrough on setting up your environment, compiling the kernel, and running Arc-OS in VirtualBox, please refer to the **[Building Guide](analysis/how_to_build.md)**.
+For a detailed walkthrough on setting up your environment, compiling the kernel, and running Arc-OS in VirtualBox, please refer to the **[Building Guide](how_to_build.md)**.
 
 Basic build command:
 ```powershell
