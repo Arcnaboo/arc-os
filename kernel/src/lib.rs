@@ -8,7 +8,6 @@ pub mod io;
 pub mod cm;
 pub mod lpc;
 
-use core::panic::PanicInfo;
 
 #[no_mangle]
 pub extern "C" fn KiSystemStartup() -> ! {
@@ -16,11 +15,5 @@ pub extern "C" fn KiSystemStartup() -> ! {
     println!("Loading HAL...");
     println!("Starting Scheduler...");
     
-    loop {}
-}
-
-#[panic_handler]
-fn panic(info: &PanicInfo) -> ! {
-    println!("{}", info);
     loop {}
 }

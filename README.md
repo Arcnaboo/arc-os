@@ -36,15 +36,16 @@ To build and test Arc-Os, you will need the following tools installed:
 
 ### Building the OS
 
-*Build instructions will be updated as the bootloader and kernel compilation steps are finalized.*
+For a detailed walkthrough on setting up your environment, compiling the kernel, and running Arc-OS in VirtualBox, please refer to the **[Building Guide](analysis/how_to_build.md)**.
 
-```bash
+Basic build command:
+```powershell
 # Clone the repository
-git clone https://github.com/your-username/arc-os.git
+git clone https://github.com/Arda/arc-os.git
 cd arc-os
 
-# Build the kernel
-cargo build --target x86_64-arc_os.json
+# Build the entire workspace
+cargo build
 ```
 
 ## 🧠 AI Subsystems
