@@ -1,5 +1,6 @@
 [build]
 target = "x86_64-arc-os.json"
+rustflags = ["-Zunstable-options"]
 
 [target.'cfg(target_os = "none")']
 runner = "bootimage runner"
@@ -7,4 +8,6 @@ runner = "bootimage runner"
 [unstable]
 build-std = ["core", "compiler_builtins", "alloc"]
 build-std-features = ["compiler-builtins-mem"]
-json-target-spec = true
+
+[env]
+RUSTC = { value = "C:\\Users\\Arda\\source\\repos\\arc-os\\rustc.bat" }

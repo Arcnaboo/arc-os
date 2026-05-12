@@ -47,9 +47,9 @@ You can directly compile the entire workspace (including the kernel and other su
    ```
 3. Build the OS using the custom target:
    ```powershell
-   cargo build
-   ```
-   *(Note: The build flags and target are now automatically handled by `.cargo/config.toml`)*
+    cargo build -Z json-target-spec
+    ```
+    *(Note: The build process utilizes an automatic `rustc` shim in `.cargo/config.toml` to ensure compatibility with custom targets.)*
 
 ### Option B: Building via CMake
 CMake will orchestrate the Cargo build process.
@@ -71,7 +71,8 @@ To run the OS on a virtual machine, we need to convert the compiled kernel execu
 1. Ensure you are in the root directory of the repository.
 2. Run the `bootimage` command. This will compile the kernel and automatically link it with the `bootloader` crate to produce a bootable `.bin` file.
    ```powershell
-   cargo bootimage
+   cd kernel
+   cargo bootimage -Z json-target-spec
    ```
 3. After the process finishes, navigate to the target output directory:
    ```text
@@ -99,15 +100,16 @@ Now that you have your bootable image, you can mount it in VirtualBox.
 ### Step 4.2: Mount the Boot Image
 1. Select the `Arc-OS` VM from the list and click **Settings**.
 2. Go to the **Storage** tab.
-3. Under the *Controller: IDE* section, click the **"Empty"** optical drive icon.
-4. On the right-side panel, click the small CD icon next to "Optical Drive" and select **"Choose a disk file..."**.
-5. Navigate to your project directory and select the bootable image you generated earlier:
-   `C:\Users\Arda\source\repos\arc-os\target\x86_64-arc-os\debug\bootimage-kernel.bin`
+3. If there is no Floppy Controller, click the **"Adds storage controller"** icon at the bottom of the storage tree and select **"I82078 (Floppy)"**.
+4. Click the **"Adds floppy device"** icon next to the Floppy Controller.
+5. In the dialog, click **Add** and navigate to your project directory to select the bootable image:
+   `C:\Users\Arda\source\repos\arc-os\target\x86_64-arc-os\debug\arc-os.img`
+6. Select the `arc-os.img` file and click **Choose**.
 
-### Step 4.3: Adjust Boot Settings (Optional but Recommended)
+### Step 4.3: Adjust Boot Settings (Critical)
 1. Go to the **System** tab in the Settings window.
-2. Ensure **Optical** is at the top of the Boot Order list.
-3. If your bootloader is UEFI-based, check the **"Enable EFI (special OSes only)"** box. If using standard BIOS (like typical `bootimage` setups), leave it unchecked.
+2. Ensure **Floppy** is at the top of the Boot Order list.
+3. **IMPORTANT**: Ensure **"Enable EFI (special OSes only)"** is **UNCHECKED**. The current bootloader is BIOS-based.
 4. Click **OK** to save settings.
 
 ### Step 4.4: Boot the OS!
